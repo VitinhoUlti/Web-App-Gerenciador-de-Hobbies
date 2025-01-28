@@ -1,0 +1,186 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj": {}
+  },
+  "projects": {
+    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj",
+        "projectName": "Testezin",
+        "projectPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj",
+        "packagesPath": "/home/vitin/.nuget/packages/",
+        "outputPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/vitin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
+            "System.IdentityModel.Tokens.JWT": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "npgsql": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj",
+        "projectName": "MVC",
+        "projectPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj",
+        "packagesPath": "/home/vitin/.nuget/packages/",
+        "outputPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/vitin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj": {
+                "projectPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
