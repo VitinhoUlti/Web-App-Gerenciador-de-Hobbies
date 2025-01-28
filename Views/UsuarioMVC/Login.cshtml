@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="display-4 text-center">@ViewData["Title"]</h1>
+
+@{
+<form method="post" asp-action="Logar" asp-controller="UsuarioMVC">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nome</span>
+        <input asp-for=Nome type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Senha</span>
+        <input asp-for=Senha type="text" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="col-12 d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button class="btn btn-secondary" asp-controller="UsuarioMVC" asp-action="CriarUsuario">Não tem uma conta? Cadastre</button>
+    </div>
+</form>
+}

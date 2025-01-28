@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hvCjHaguKs6j+C18MHHaAF6Uu6q/0/BxMiI2s/nTYmK3c0cCg9V81KOLDjL4+iZ4Ln/2TLv7BxVPyXxDUYaeeQ==",
+  "dgSpecHash": "poF9HONmPojT3E9E7tWpj7bapJy/UKOEVOIo+KLbQG+qCyWaTcUZNBDLpVMEH129dEscarz2S/OO98ha291SWA==",
   "success": true,
-  "projectFilePath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj",
+  "projectFilePath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/MVC.csproj",
   "expectedPackageFiles": [
     "/home/vitin/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/vitin/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

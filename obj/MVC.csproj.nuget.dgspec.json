@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj": {}
+    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/MVC.csproj": {}
   },
   "projects": {
     "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj": {
@@ -116,14 +116,14 @@
         }
       }
     },
-    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj": {
+    "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj",
+        "projectUniqueName": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/MVC.csproj",
+        "projectPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/MVC.csproj",
         "packagesPath": "/home/vitin/.nuget/packages/",
-        "outputPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/MVC/obj/",
+        "outputPath": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/vitin/.nuget/NuGet/NuGet.Config"
