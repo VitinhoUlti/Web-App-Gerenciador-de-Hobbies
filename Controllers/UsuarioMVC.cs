@@ -31,12 +31,21 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            return View("index", dados);
+            return View("Login");
         }
 
         public IActionResult Login()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Logar(Usuarios usuarios){
+            var resposta = await httpClient.GetAsync("Usuario/Usuarios/login/dd/dd");
+            resposta.EnsureSuccessStatusCode();
+
+            var dados = await resposta.Content.ReadAsStringAsync();
+            var usuario = Newtonsoft.Json.JsonConvert.DeserializeObject<Usuarios>(dados);
+            return View("AdministrarUsuarios");
         }
 
         public IActionResult AdministrarUsuarios()
