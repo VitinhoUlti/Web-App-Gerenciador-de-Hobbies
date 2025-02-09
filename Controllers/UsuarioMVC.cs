@@ -14,11 +14,13 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private readonly HttpClient httpClient;
+
         public UsuarioMVC()
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
         }
+
         public IActionResult CriarUsuario()
         {
             return View();
@@ -40,11 +42,13 @@ namespace MVC.Controllers
         }
 
         public async Task<IActionResult> Logar(Usuarios usuarios){
-            var resposta = await httpClient.GetAsync("Usuario/Usuarios/login/dd/dd");
+            var resposta = await httpClient.GetAsync($"Usuario/Usuarios/login/{usuarios.Nome}/{usuarios.Senha}");
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var usuario = Newtonsoft.Json.JsonConvert.DeserializeObject<Usuarios>(dados);
+
+            ViewBag.Usuario = new {usuario.Nome, usuario.Senha};
             return View("AdministrarUsuarios");
         }
 
