@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
@@ -33,6 +35,7 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
+            ViewBag.Usuario = new {usuarios.Id, usuarios.Nome, usuarios.Senha};
             return View("Login");
         }
 
@@ -46,9 +49,8 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            var usuario = Newtonsoft.Json.JsonConvert.DeserializeObject<Usuarios>(dados);
 
-            ViewBag.Usuario = new {usuario.Nome, usuario.Senha};
+            ViewBag.Usuario = dados;
             return View("AdministrarUsuarios");
         }
 
