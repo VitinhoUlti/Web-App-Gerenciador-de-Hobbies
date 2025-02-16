@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using MVC.Models;
 using Newtonsoft.Json;
 using Testezin.Entidades;
-using Testezin.Servicos;
 
 namespace MVC.Controllers
 {
@@ -32,13 +31,14 @@ namespace MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Cadastrar(Usuarios usuarios){
-            var usuario = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(usuarios), Encoding.UTF8, "application/json");
+            var usuario = new StringContent(JsonConvert.SerializeObject(usuarios), Encoding.UTF8, "application/json");
             var resposta = await httpClient.PostAsync("Usuario/Usuarios", usuario);
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
-            ViewBag.Usuario = dadosusuario;
+
+            ViewBag.Token = dadosusuario.token;
             return View("AdministrarUsuarios");
         }
 
@@ -52,8 +52,9 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            var usuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
+            var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
             
+            ViewBag.Token = dadosusuario.token;
             return View("AdministrarUsuarios");
         }
 

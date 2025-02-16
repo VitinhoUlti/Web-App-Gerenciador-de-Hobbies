@@ -19,7 +19,7 @@ namespace MVC.Controllers
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ViewBag.Usuario);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ViewBag.Token);
         }
 
         public IActionResult CriarHobbies()
