@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
+using Newtonsoft.Json;
 using Testezin.Entidades;
+using Testezin.Servicos;
 
 namespace MVC.Controllers
 {
@@ -49,8 +51,8 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-
-            ViewBag.Usuario = dados;
+            var usuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
+            ViewBag.Usuario = usuario.token;
             return View("AdministrarUsuarios");
         }
 
