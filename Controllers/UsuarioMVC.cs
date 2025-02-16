@@ -37,8 +37,9 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            ViewBag.Usuario = new {usuarios.Id, usuarios.Nome, usuarios.Senha};
-            return View("Login");
+            var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
+            ViewBag.Usuario = dadosusuario;
+            return View("AdministrarUsuarios");
         }
 
         public IActionResult Login()
@@ -52,7 +53,7 @@ namespace MVC.Controllers
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var usuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
-            ViewBag.Usuario = usuario.token;
+            
             return View("AdministrarUsuarios");
         }
 
