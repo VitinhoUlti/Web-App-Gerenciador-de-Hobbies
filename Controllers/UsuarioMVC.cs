@@ -17,6 +17,7 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private readonly HttpClient httpClient;
+        private UsuarioModel cliente;
 
         public UsuarioMVC()
         {
@@ -38,7 +39,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            ViewBag.Token = dadosusuario.token;
+            cliente = dadosusuario;
+
             return View("AdministrarUsuarios");
         }
 
@@ -52,13 +54,36 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            var dadosusuario = JsonConvert.SerializeObject(dados);
+            var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
+
+            cliente = dadosusuario;
             
-            ViewBag.Token = dados;
-            return View("AdministrarUsuarios");
+            return View("CriarHobbies");
         }
 
         public IActionResult AdministrarUsuarios()
+        {
+            return View();
+        }
+
+        public IActionResult CriarHobbies()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies){
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cliente.token);
+
+            var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
+            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={cliente.usuario.Id}", hobbie);
+            resposta.EnsureSuccessStatusCode();
+
+            var dados = await resposta.Content.ReadAsStringAsync();
+            return View("AdministrarHobbies");
+        }
+
+        public IActionResult AdministrarHobbies()
         {
             return View();
         }

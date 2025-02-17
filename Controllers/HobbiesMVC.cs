@@ -19,11 +19,13 @@ namespace MVC.Controllers
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ViewBag.Token);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ViewBag.Usuario);
         }
 
-        public IActionResult CriarHobbies()
+        public IActionResult CriarHobbies(string token)
         {
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            
             return View();
         }
 
