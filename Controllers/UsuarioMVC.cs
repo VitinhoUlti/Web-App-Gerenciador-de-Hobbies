@@ -52,9 +52,9 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
+            var dadosusuario = JsonConvert.SerializeObject(dados);
             
-            ViewBag.Token = dadosusuario.token;
+            ViewBag.Token = dados;
             return View("AdministrarUsuarios");
         }
 
