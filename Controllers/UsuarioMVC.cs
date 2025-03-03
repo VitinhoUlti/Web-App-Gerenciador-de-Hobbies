@@ -19,7 +19,7 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private HttpClient httpClient;
-        private string token;
+        private string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InJyIiwibmJmIjoxNzQwOTc0MDgzLCJleHAiOjE3NDA5ODEyODMsImlhdCI6MTc0MDk3NDA4M30.gZT-SZR33-x3avLSCtPw6-OWnnHAJT6iYGMHSxPSEDI";
 
         public UsuarioMVC()
         {
@@ -41,6 +41,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
+            TempData["token"] = dadosusuario.token;
+
             return View("Login");
         }
 
@@ -56,7 +58,7 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImVyIiwibmJmIjoxNzQwMzY5MjcxLCJleHAiOjE3NDAzNzY0NzEsImlhdCI6MTc0MDM2OTI3MX0.2yc1OndD8XYEKAMS7vZROI2lzxbRa3S3w13rPqTCkIc");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{token}");
             
             return View("CriarHobbies");
         }
@@ -67,7 +69,7 @@ namespace MVC.Controllers
         }
 
         public async Task<IActionResult> AcharUsuarioId(int id){
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImVyIiwibmJmIjoxNzQwMzY5MjcxLCJleHAiOjE3NDAzNzY0NzEsImlhdCI6MTc0MDM2OTI3MX0.2yc1OndD8XYEKAMS7vZROI2lzxbRa3S3w13rPqTCkIc");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/5");
             resposta.EnsureSuccessStatusCode();
 
@@ -84,11 +86,11 @@ namespace MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies){
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
+
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImVyIiwibmJmIjoxNzQwMzY5MjcxLCJleHAiOjE3NDAzNzY0NzEsImlhdCI6MTc0MDM2OTI3MX0.2yc1OndD8XYEKAMS7vZROI2lzxbRa3S3w13rPqTCkIc");
-
-            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario=1", hobbie);
+            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario=10", hobbie);
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
