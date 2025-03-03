@@ -3,12 +3,12 @@
 }
 <form method="post" asp-action="AcharUsuarioId" asp-controller="UsuarioMVC">
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Nome</span>
-        <input asp-route-id type="number" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">Id</span>
+        <input asp-route-id type="number" class="form-control" placeholder="Id" aria-label="Id" aria-describedby="basic-addon1">
     </div>
 
     <div class="col-12 d-grid gap-2">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Buscar Usuario</button>
         <button class="btn btn-secondary" asp-controller="UsuarioMVC" asp-action="CriarUsuario">Não tem uma conta? Cadastre</button>
     </div>
 </form>
