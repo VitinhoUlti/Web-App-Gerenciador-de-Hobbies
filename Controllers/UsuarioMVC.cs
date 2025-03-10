@@ -72,7 +72,7 @@ namespace MVC.Controllers
         public async Task<IActionResult> AcharUsuarioId(int id){
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
 
-            var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{(int)id}");
+            var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
