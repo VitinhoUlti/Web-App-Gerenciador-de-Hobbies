@@ -19,7 +19,6 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private HttpClient httpClient;
-        private string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InJyIiwibmJmIjoxNzQwOTc0MDgzLCJleHAiOjE3NDA5ODEyODMsImlhdCI6MTc0MDk3NDA4M30.gZT-SZR33-x3avLSCtPw6-OWnnHAJT6iYGMHSxPSEDI";
 
         public UsuarioMVC()
         {
@@ -73,7 +72,7 @@ namespace MVC.Controllers
         public async Task<IActionResult> AcharUsuarioId(int id){
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
 
-            var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
+            var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{(int)id}");
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
