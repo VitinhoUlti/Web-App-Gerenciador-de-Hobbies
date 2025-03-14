@@ -22,11 +22,11 @@ namespace MVC.Controllers
         private HttpClient httpClient;
         private readonly IMemoryCache memoryCache;
 
-        public UsuarioMVC(IMemoryCache memoryCache)
+        public UsuarioMVC(IMemoryCache _memoryCache)
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
-            memoryCache = memoryCache;
+            memoryCache = _memoryCache;
         }
 
         public IActionResult CriarUsuario()
@@ -43,8 +43,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            TempData["token"] = dadosusuario.token;
-            TempData["usuario"] = dadosusuario.usuario.Id;
+            memoryCache.Set("token", dadosusuario.token);
+            memoryCache.Set("idusuario", dadosusuario.usuario.Id);
 
             return View("Login");
         }
@@ -61,8 +61,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            TempData["token"] = dadosusuario.token;
-            TempData["usuario"] = dadosusuario.usuario.Id;
+            memoryCache.Set("token", dadosusuario.token);
+            memoryCache.Set("idusuario", dadosusuario.usuario.Id);
             
             return View("CriarHobbies");
         }
@@ -73,7 +73,7 @@ namespace MVC.Controllers
         }
 
         public async Task<IActionResult> AcharUsuarioId(int id){
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{memoryCache.Get("token")}");
 
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
             resposta.EnsureSuccessStatusCode();
@@ -91,11 +91,11 @@ namespace MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies){
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{TempData["token"].ToString()}");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{memoryCache.Get("token")}");
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
-            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={TempData["usuario"].ToString()}", hobbie);
+            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={memoryCache.Get("idusuario")}", hobbie);
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
