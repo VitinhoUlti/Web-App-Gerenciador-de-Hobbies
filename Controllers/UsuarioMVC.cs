@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
 using Newtonsoft.Json;
@@ -19,11 +20,13 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private HttpClient httpClient;
+        private readonly IMemoryCache memoryCache;
 
-        public UsuarioMVC()
+        public UsuarioMVC(IMemoryCache memoryCache)
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
+            memoryCache = memoryCache;
         }
 
         public IActionResult CriarUsuario()
