@@ -42,6 +42,9 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
+            HttpContext.Session.SetString("token", dadosusuario.token);
+            HttpContext.Session.SetInt32("idusuario", dadosusuario.usuario.Id);
+
             return View("Login");
         }
 
