@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using MVC.Models;
 using Newtonsoft.Json;
 using Testezin.Entidades;
+using Microsoft.AspNetCore.Session;
 
 namespace MVC.Controllers
 {
@@ -65,6 +66,7 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
+            HttpContext.Session.SetString("token", dadosusuario.token);
             memoryCache.Set("token", dadosusuario.token, memorycacheoptions);
             memoryCache.Set("idusuario", dadosusuario.usuario.Id, memorycacheoptions);
             
@@ -77,7 +79,7 @@ namespace MVC.Controllers
         }
 
         public async Task<IActionResult> AcharUsuarioId(int id){
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{memoryCache.Get("token")}");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
             resposta.EnsureSuccessStatusCode();
@@ -95,7 +97,7 @@ namespace MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies){
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{memoryCache.Get("token")}");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
