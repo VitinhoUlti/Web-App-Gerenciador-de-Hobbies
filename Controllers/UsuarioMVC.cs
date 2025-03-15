@@ -21,17 +21,11 @@ namespace MVC.Controllers
     public class UsuarioMVC : Controller
     {
         private HttpClient httpClient;
-        private readonly IMemoryCache memoryCache;
-        private readonly MemoryCacheEntryOptions memorycacheoptions = new MemoryCacheEntryOptions {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(36000),
-            SlidingExpiration = TimeSpan.FromMinutes(12000)
-        };
 
-        public UsuarioMVC(IMemoryCache _memoryCache)
+        public UsuarioMVC()
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:5058/");
-            memoryCache = _memoryCache;
         }
 
         public IActionResult CriarUsuario()
@@ -47,9 +41,6 @@ namespace MVC.Controllers
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
-
-            memoryCache.Set("token", dadosusuario.token, memorycacheoptions);
-            memoryCache.Set("idusuario", dadosusuario.usuario.Id, memorycacheoptions);
 
             return View("Login");
         }
@@ -67,8 +58,7 @@ namespace MVC.Controllers
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
             HttpContext.Session.SetString("token", dadosusuario.token);
-            memoryCache.Set("token", dadosusuario.token, memorycacheoptions);
-            memoryCache.Set("idusuario", dadosusuario.usuario.Id, memorycacheoptions);
+            HttpContext.Session.SetInt32("idusuario", dadosusuario.usuario.Id);
             
             return View("CriarHobbies");
         }
@@ -101,7 +91,7 @@ namespace MVC.Controllers
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
-            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={memoryCache.Get("idusuario")}", hobbie);
+            var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={HttpContext.Session.GetInt32("idusuario")}", hobbie);
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
