@@ -21,6 +21,10 @@ namespace MVC.Controllers
     {
         private HttpClient httpClient;
         private readonly IMemoryCache memoryCache;
+        private readonly MemoryCacheEntryOptions memorycacheoptions = new MemoryCacheEntryOptions {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(36000),
+            SlidingExpiration = TimeSpan.FromMinutes(12000)
+        };
 
         public UsuarioMVC(IMemoryCache _memoryCache)
         {
@@ -43,8 +47,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            memoryCache.Set("token", dadosusuario.token);
-            memoryCache.Set("idusuario", dadosusuario.usuario.Id);
+            memoryCache.Set("token", dadosusuario.token, memorycacheoptions);
+            memoryCache.Set("idusuario", dadosusuario.usuario.Id, memorycacheoptions);
 
             return View("Login");
         }
@@ -61,8 +65,8 @@ namespace MVC.Controllers
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
 
-            memoryCache.Set("token", dadosusuario.token);
-            memoryCache.Set("idusuario", dadosusuario.usuario.Id);
+            memoryCache.Set("token", dadosusuario.token, memorycacheoptions);
+            memoryCache.Set("idusuario", dadosusuario.usuario.Id, memorycacheoptions);
             
             return View("CriarHobbies");
         }
