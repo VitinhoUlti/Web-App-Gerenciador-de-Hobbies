@@ -105,7 +105,7 @@ namespace MVC.Controllers
         {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
-            var resposta = await httpClient.GetAsync($"http://localhost:5058/Hobbies/idusuario/{HttpContext.Session.GetInt32("idusuario")}");
+            var resposta = await httpClient.GetAsync($"Hobbies/idusuario/{HttpContext.Session.GetInt32("idusuario")}");
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
