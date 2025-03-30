@@ -98,7 +98,7 @@ namespace MVC.Controllers
             resposta.EnsureSuccessStatusCode();
 
             var dados = await resposta.Content.ReadAsStringAsync();
-            return View("AdministrarHobbies");
+            return View("AdministrarUsuarios");
         }
 
         public async Task<IActionResult> AdministrarHobbies()
