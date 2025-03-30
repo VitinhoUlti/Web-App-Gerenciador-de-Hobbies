@@ -101,9 +101,19 @@ namespace MVC.Controllers
             return View("AdministrarHobbies");
         }
 
-        public IActionResult AdministrarHobbies()
+        public async Task<IActionResult> AdministrarHobbies()
         {
-            return View();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
+
+            var resposta = await httpClient.GetAsync($"http://localhost:5058/Hobbies/idusuario/{HttpContext.Session.GetInt32("idusuario")}");
+            resposta.EnsureSuccessStatusCode();
+
+            var dados = await resposta.Content.ReadAsStringAsync();
+            List<Hobbies> dadosusuario = JsonConvert.DeserializeObject<List<Hobbies>>(dados);
+
+            ViewBag.Resposta = dadosusuario;
+
+            return View("AdministrarHobbies");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
