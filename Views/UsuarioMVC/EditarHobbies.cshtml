@@ -1,0 +1,39 @@
+@using Testezin.Entidades;
+@model Hobbies;
+@{
+    ViewData["Title"] = "Editar Hobbies";
+}
+
+<h1 class="display-4 text-center">@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Editar" asp-controller="UsuarioMVC">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nome</span>
+        <input asp-for=Nome type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Aniversario</span>
+        <input asp-for=Aniversario type="date" class="form-control" placeholder="Aniversario" aria-label="Aniversario" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Hobbie</span>
+        <input asp-for=Hobbie type="text" class="form-control" placeholder="Hobbie" aria-label="Hobbie" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Gostos</span>
+        <input asp-for=Gostos type="text" class="form-control" placeholder="Gostos" aria-label="Gostos" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Possiveis Presentes</span>
+        <input asp-for=PossiveisPresentes type="text" class="form-control" placeholder="Possiveis Presentes" aria-label="PossiveisPresentes" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="col-12 d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Editar Hobbie</button>
+        <button class="btn btn-secondary" asp-controller="UsuarioMVC" asp-action="AdministarHobbies">Cancelar</button>
+    </div>
+</form>
