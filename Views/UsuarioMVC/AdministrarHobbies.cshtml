@@ -10,6 +10,7 @@
 
 @{
     foreach(Hobbies item in ViewBag.Resposta){
+        <form>
         <div style="border: 1px solid #0044ff; margin-bottom: 1vh;">
             <h1 style="border-bottom: 1px solid #0044ff;">ID: @item.Id</h1>
             <h1 style="border-bottom: 1px solid #0044ff;">Nome: @item.Nome</h1>
@@ -20,8 +21,9 @@
         </div>
 
         <div class="col-12 d-grid gap-2" style="margin-bottom: 1vh;">
-            <button type="submit" class="btn btn-primary" asp-controller="UsuarioMVC" asp-action="EditarHobbies">Editar</button>
+            <button class="btn btn-primary" asp-controller="UsuarioMVC" asp-action="EditarHobbies">Editar</button>
             <button class="btn btn-danger" asp-controller="UsuarioMVC" asp-action="DeletarHobbies">Deletar</button>
         </div>
+        </form>
     }
 }

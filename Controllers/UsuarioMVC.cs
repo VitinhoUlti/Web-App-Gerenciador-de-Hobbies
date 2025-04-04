@@ -37,7 +37,12 @@ namespace MVC.Controllers
         public async Task<IActionResult> Cadastrar(Usuarios usuarios){
             var usuario = new StringContent(JsonConvert.SerializeObject(usuarios), Encoding.UTF8, "application/json");
             var resposta = await httpClient.PostAsync("Usuario/Usuarios", usuario);
-            resposta.EnsureSuccessStatusCode();
+
+            try{
+                resposta.EnsureSuccessStatusCode();
+            }catch{
+                return View("Error");
+            }
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
@@ -95,10 +100,13 @@ namespace MVC.Controllers
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
             var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={HttpContext.Session.GetInt32("idusuario")}", hobbie);
-            resposta.EnsureSuccessStatusCode();
-
-            var dados = await resposta.Content.ReadAsStringAsync();
-            return View("AdministrarUsuarios");
+            try{
+                resposta.EnsureSuccessStatusCode();
+                var dados = await resposta.Content.ReadAsStringAsync();
+                return View("AdministrarUsuarios");
+            }catch{
+                return View("Error");
+            }
         }
 
         public async Task<IActionResult> AdministrarHobbies()
@@ -106,7 +114,9 @@ namespace MVC.Controllers
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var resposta = await httpClient.GetAsync($"Hobbies/idusuario/{HttpContext.Session.GetInt32("idusuario")}");
-            resposta.EnsureSuccessStatusCode();
+            if(!resposta.IsSuccessStatusCode){
+                return View("Error!");
+            }
 
             var dados = await resposta.Content.ReadAsStringAsync();
             List<Hobbies> dadosusuario = JsonConvert.DeserializeObject<List<Hobbies>>(dados);
