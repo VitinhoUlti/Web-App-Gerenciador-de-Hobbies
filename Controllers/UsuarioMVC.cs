@@ -126,7 +126,7 @@ namespace MVC.Controllers
             return View("AdministrarHobbies");
         }
 
-        public IActionResult EditarHobbies()
+        public IActionResult EditarHobbies(Hobbies hobbie)
         {
             return View();
         }
