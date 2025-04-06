@@ -41,6 +41,8 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
+                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+                
                 return View("TelaErro");
             }
 
@@ -64,6 +66,8 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
+                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+
                 return View("TelaErro");
             }
 
@@ -89,6 +93,8 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
+                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+
                 return View("TelaErro");
             }
 
@@ -116,6 +122,8 @@ namespace MVC.Controllers
 
                 return View("AdministrarUsuarios");
             }catch {
+                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+
                 return View("TelaErro");
             }
         }
@@ -129,6 +137,8 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
+                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+
                 return View("TelaErro");
             }
 
