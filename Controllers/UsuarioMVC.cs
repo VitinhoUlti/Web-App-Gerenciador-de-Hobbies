@@ -38,10 +38,10 @@ namespace MVC.Controllers
             var usuario = new StringContent(JsonConvert.SerializeObject(usuarios), Encoding.UTF8, "application/json");
             var resposta = await httpClient.PostAsync("Usuario/Usuarios", usuario);
 
-            try{
+            try {
                 resposta.EnsureSuccessStatusCode();
-            }catch{
-                return View("Error");
+            }catch {
+                return View("TelaErro");
             }
 
             var dados = await resposta.Content.ReadAsStringAsync();
@@ -60,7 +60,12 @@ namespace MVC.Controllers
 
         public async Task<IActionResult> Logar(Usuarios usuarios){
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/login/{usuarios.Nome}/{usuarios.Senha}");
-            resposta.EnsureSuccessStatusCode();
+
+            try {
+                resposta.EnsureSuccessStatusCode();
+            }catch {
+                return View("TelaErro");
+            }
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<UsuarioModel>(dados);
@@ -80,11 +85,16 @@ namespace MVC.Controllers
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
-            resposta.EnsureSuccessStatusCode();
+
+            try {
+                resposta.EnsureSuccessStatusCode();
+            }catch {
+                return View("TelaErro");
+            }
 
             var dados = await resposta.Content.ReadAsStringAsync();
             var dadosusuario = JsonConvert.DeserializeObject<Usuarios>(dados);
-            
+
             return View("CriarHobbies");
         }
 
@@ -100,12 +110,13 @@ namespace MVC.Controllers
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
             var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={HttpContext.Session.GetInt32("idusuario")}", hobbie);
-            try{
+
+            try {
                 resposta.EnsureSuccessStatusCode();
-                var dados = await resposta.Content.ReadAsStringAsync();
+
                 return View("AdministrarUsuarios");
-            }catch{
-                return View("Error");
+            }catch {
+                return View("TelaErro");
             }
         }
 
@@ -114,8 +125,11 @@ namespace MVC.Controllers
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var resposta = await httpClient.GetAsync($"Hobbies/idusuario/{HttpContext.Session.GetInt32("idusuario")}");
-            if(!resposta.IsSuccessStatusCode){
-                return View("Error!");
+
+            try {
+                resposta.EnsureSuccessStatusCode();
+            }catch {
+                return View("TelaErro");
             }
 
             var dados = await resposta.Content.ReadAsStringAsync();

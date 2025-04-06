@@ -4,8 +4,6 @@
     ViewData["Title"] = "AdministarHobbies";
 }
 
-<h1>@ViewBag.Usuario</h1>
-
 @{
     foreach(Hobbies item in ViewBag.Resposta){
         <form method="get" asp-action="EditarHobbies" asp-controller="UsuarioMVC">
