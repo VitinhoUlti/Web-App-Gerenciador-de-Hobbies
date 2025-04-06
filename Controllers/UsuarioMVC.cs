@@ -52,7 +52,7 @@ namespace MVC.Controllers
             HttpContext.Session.SetString("token", dadosusuario.token);
             HttpContext.Session.SetInt32("idusuario", dadosusuario.usuario.Id);
 
-            return View("Login");
+            return View("CriarHobbies");
         }
 
         public IActionResult Login()
