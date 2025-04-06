@@ -41,8 +41,8 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
-                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
-                
+                ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
+
                 return View("TelaErro");
             }
 
@@ -66,7 +66,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
-                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+                ViewBag.Erro = "Não conseguimos achar seus dados, tente novamente ou se cadastre!";
 
                 return View("TelaErro");
             }
@@ -93,7 +93,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
-                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+                ViewBag.Erro = "Não conseguimos achar seus dados, tente novamente!";
 
                 return View("TelaErro");
             }
@@ -122,7 +122,7 @@ namespace MVC.Controllers
 
                 return View("AdministrarUsuarios");
             }catch {
-                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+                ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
 
                 return View("TelaErro");
             }
@@ -137,7 +137,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             }catch {
-                ViewBag.Erro = "Houve um problema no envio dos seus dados, tente novamente!";
+                ViewBag.Erro = "Você não pode administrar seus dados se não logar ou cadastrar!";
 
                 return View("TelaErro");
             }
