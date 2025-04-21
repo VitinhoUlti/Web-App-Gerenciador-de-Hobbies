@@ -35,6 +35,16 @@ namespace MVC.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Cadastrar(Usuarios usuarios){
+            var jaExiste = await httpClient.GetAsync("Usuario/Usuarios/nome/9");
+
+            try {
+                jaExiste.EnsureSuccessStatusCode();
+            }catch {
+                ViewBag.Erro = "Esse nome já está cadastrado, tente outro!";
+
+                return View("TelaErro");
+            }
+
             var usuario = new StringContent(JsonConvert.SerializeObject(usuarios), Encoding.UTF8, "application/json");
             var resposta = await httpClient.PostAsync("Usuario/Usuarios", usuario);
 

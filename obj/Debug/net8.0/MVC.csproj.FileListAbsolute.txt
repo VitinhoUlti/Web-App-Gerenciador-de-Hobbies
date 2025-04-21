@@ -781,9 +781,9 @@
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/scopedcss/bundle/MVC.styles.css
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/scopedcss/projectbundle/MVC.bundle.scp.css
-/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/MVC.csproj.CopyComplete
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/MVC.dll
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/refint/MVC.dll
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/MVC.pdb
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/MVC.genruntimeconfig.cache
 /home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/ref/MVC.dll
+/home/vitin/Documentos/Projetos/C#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/obj/Debug/net8.0/MVC.csproj.Up2Date

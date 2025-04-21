@@ -1506,7 +1506,10 @@
           "Npgsql": "9.0.1"
         },
         "runtime": {
-          "Testezin.dll": {}
+          "Testezin.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "Testezin.dll": {}
