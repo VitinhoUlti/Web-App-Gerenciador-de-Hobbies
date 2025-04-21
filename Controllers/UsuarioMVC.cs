@@ -130,7 +130,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
 
-                return View("AdministrarUsuarios");
+                return View("AdministrarHobbies");
             }catch {
                 ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
 
