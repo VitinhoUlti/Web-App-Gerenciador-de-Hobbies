@@ -169,9 +169,22 @@ namespace MVC.Controllers
             return View();
         }
 
-        public IActionResult DeletarHobbies(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeletarHobbies(int id)
         {
-            return View();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
+
+            var resposta = await httpClient.GetAsync($"Hobbies/{id}");
+
+            try {
+                resposta.EnsureSuccessStatusCode();
+            }catch {
+                ViewBag.Erro = "Algo deu errado durante o deletamento, tente novamente!";
+
+                return View("TelaErro");
+            }
+
+            return View("AdministrarHobbies");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
