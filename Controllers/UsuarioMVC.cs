@@ -34,7 +34,8 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(Usuarios usuarios){
+        public async Task<IActionResult> Cadastrar(Usuarios usuarios)
+        {
             var jaExiste = await httpClient.GetAsync("Usuario/Usuarios/nome/9");
 
             try {
@@ -70,7 +71,8 @@ namespace MVC.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Logar(Usuarios usuarios){
+        public async Task<IActionResult> Logar(Usuarios usuarios)
+        {
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/login/{usuarios.Nome}/{usuarios.Senha}");
 
             try {
@@ -95,7 +97,8 @@ namespace MVC.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AcharUsuarioId(int id){
+        public async Task<IActionResult> AcharUsuarioId(int id)
+        {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var resposta = await httpClient.GetAsync($"Usuario/Usuarios/id/{id}");
@@ -120,7 +123,8 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies){
+        public async Task<IActionResult> CadastrarHobbies(Hobbies hobbies)
+        {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
@@ -161,6 +165,11 @@ namespace MVC.Controllers
         }
 
         public IActionResult EditarHobbies(Hobbies hobbie)
+        {
+            return View();
+        }
+
+        public IActionResult DeletarHobbies(int id)
         {
             return View();
         }
