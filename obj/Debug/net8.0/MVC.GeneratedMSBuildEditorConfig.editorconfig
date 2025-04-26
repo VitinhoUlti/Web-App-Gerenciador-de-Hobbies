@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb01WQy9DcmlhclVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/vitin/Documentos/Projetos/C\#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/Views/UsuarioMVC/DeletarHobbies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb01WQy9EZWxldGFySG9iYmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/vitin/Documentos/Projetos/C\#/TesteWebApi/Web-App-Gerenciador-de-Hobbies/Views/UsuarioMVC/EditarHobbies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb01WQy9FZGl0YXJIb2JiaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

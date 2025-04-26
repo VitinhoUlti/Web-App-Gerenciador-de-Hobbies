@@ -36,7 +36,7 @@ namespace MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(Usuarios usuarios)
         {
-            var jaExiste = await httpClient.GetAsync("Usuario/Usuarios/nome/9");
+            var jaExiste = await httpClient.GetAsync($"Usuario/Usuarios/nome/{usuarios.Nome}");
 
             try {
                 jaExiste.EnsureSuccessStatusCode();
@@ -134,7 +134,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
 
-                return View("AdministrarHobbies");
+                return View("CriarHobbies");
             }catch {
                 ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
 
@@ -168,7 +168,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-
+        
         [HttpDelete]
         public async Task<IActionResult> DeletarHobbies(int id)
         {
