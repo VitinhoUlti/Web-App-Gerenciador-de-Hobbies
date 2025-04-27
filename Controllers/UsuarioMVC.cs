@@ -167,22 +167,21 @@ namespace MVC.Controllers
             return View();
         }
         
-        [HttpDelete]
         public async Task<IActionResult> DeletarHobbies(int id)
         {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
-            var resposta = await httpClient.GetAsync($"Hobbies/{id}");
+            var resposta = await httpClient.DeleteAsync($"Hobbies/{id}");
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch {
-                ViewBag.Erro = "Algo deu errado durante o deletamento, tente novamente!";
+            }catch (Exception erro) {
+                ViewBag.Erro = $"Algo deu errado durante o deletamento, tente novamente, {erro}!";
 
                 return View("TelaErro");
             }
 
-            return View("AdministrarHobbies");
+            return View("CriarHobbies");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
