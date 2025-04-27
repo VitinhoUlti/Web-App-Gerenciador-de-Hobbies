@@ -174,7 +174,7 @@ namespace MVC.Controllers
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
-            var resposta = await httpClient.PutAsync($"Hobbies/{HttpContext.Session.GetInt32("hobbiesid")}", hobbie);
+            var resposta = await httpClient.PutAsync($"Hobbies/159", hobbie);
 
             try {
                 resposta.EnsureSuccessStatusCode();
