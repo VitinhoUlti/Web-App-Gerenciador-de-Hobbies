@@ -38,7 +38,7 @@ namespace MVC.Controllers
         {
             var jaExiste = await httpClient.GetAsync($"Usuario/Usuarios/nome/{usuarios.Nome}");
 
-            if (jaExiste.IsSuccessStatusCode) {
+            if(jaExiste.IsSuccessStatusCode){
                 ViewBag.Erro = "Esse nome já está cadastrado, tente outro!";
 
                 return View("TelaErro");
@@ -166,7 +166,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-
+        
         [HttpDelete]
         public async Task<IActionResult> DeletarHobbies(int id)
         {
