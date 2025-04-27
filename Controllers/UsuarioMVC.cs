@@ -162,11 +162,31 @@ namespace MVC.Controllers
             return View("AdministrarHobbies");
         }
 
-        public IActionResult EditarHobbies(Hobbies hobbie)
+        public IActionResult EditarHobbies(int id)
         {
+            HttpContext.Session.SetInt32("hobbiesid", 159);
             return View();
         }
-        
+
+        public async Task<IActionResult> ModificarHobbies(Hobbies hobbies)
+        {
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
+
+            var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
+
+            var resposta = await httpClient.PutAsync($"Hobbies/{HttpContext.Session.GetInt32("hobbiesid")}", hobbie);
+
+            try {
+                resposta.EnsureSuccessStatusCode();
+
+                return View("CriarHobbies");
+            }catch {
+                ViewBag.Erro = "Houve um problema ao modificar os seus dados, tente novamente!";
+
+                return View("TelaErro");
+            }
+        }
+
         public async Task<IActionResult> DeletarHobbies(int id)
         {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");

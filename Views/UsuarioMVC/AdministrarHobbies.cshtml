@@ -17,7 +17,7 @@
             </div>
     
             <div class="col-12 d-grid gap-2" style="margin-bottom: 1vh;">
-                <button type="submit" class="btn btn-primary" asp-controller="UsuarioMVC" asp-action="EditarHobbies">Editar</button>
+                <button type="submit" class="btn btn-primary" asp-controller="UsuarioMVC" asp-action="EditarHobbies" asp-route-id=@item.Id>Editar</button>
                 <button class="btn btn-danger" asp-controller="UsuarioMVC" asp-action="DeletarHobbies" asp-route-id=@item.Id>Deletar</button>
             </div>
         </form>
