@@ -164,7 +164,7 @@ namespace MVC.Controllers
 
         public IActionResult EditarHobbies(int id)
         {
-            HttpContext.Session.SetInt32("hobbiesid", 159);
+            HttpContext.Session.SetInt32("hobbiesid", id);
             return View();
         }
 
@@ -174,7 +174,7 @@ namespace MVC.Controllers
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
 
-            var resposta = await httpClient.PutAsync($"Hobbies/159", hobbie);
+            var resposta = await httpClient.PutAsync($"Hobbies/{HttpContext.Session.GetInt32("hobbiesid")}", hobbie);
 
             try {
                 resposta.EnsureSuccessStatusCode();
