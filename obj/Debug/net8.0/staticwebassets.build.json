@@ -1,23 +1,11 @@
 {
   "Version": 1,
-  "Hash": "sF9X9Qc4IVCOM6L9BFRFkgq7PHOKrkOBUiLPJw/BzDs=",
+  "Hash": "V9d4EtHpD+cG+TrFy/Rcy0jcF7q0L0vitIQhI0kSQ+Q=",
   "Source": "MVC",
   "BasePath": "_content/MVC",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "/home/vitin/Documentos/Projetos/C#/TesteWebApi/BackEnd/Testezin.csproj",
-      "Version": 2,
-      "Source": "Testezin",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
       "Name": "MVC/wwwroot",

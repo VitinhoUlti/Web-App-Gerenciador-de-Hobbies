@@ -13,7 +13,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
 using Newtonsoft.Json;
-using Testezin.Entidades;
+using MVC.Entidades;
 using Microsoft.AspNetCore.Session;
 
 namespace MVC.Controllers

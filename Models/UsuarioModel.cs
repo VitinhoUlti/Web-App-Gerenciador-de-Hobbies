@@ -1,4 +1,4 @@
-using Testezin.Entidades;
+using MVC.Entidades;
 
 namespace MVC.Models
 {
