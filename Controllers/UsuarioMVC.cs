@@ -25,7 +25,7 @@ namespace MVC.Controllers
         public UsuarioMVC()
         {
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("http://localhost:5058/");
+            httpClient.BaseAddress = new Uri("http://localhost:5057/");
         }
 
         public IActionResult CriarUsuario()
