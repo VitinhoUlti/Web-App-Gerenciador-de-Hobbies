@@ -49,7 +49,7 @@ namespace MVC.Controllers
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch {
+            } catch {
                 ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
 
                 return View("TelaErro");
@@ -75,7 +75,7 @@ namespace MVC.Controllers
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch {
+            } catch {
                 ViewBag.Erro = "Não conseguimos achar seus dados, tente novamente ou se cadastre!";
 
                 return View("TelaErro");
@@ -103,7 +103,7 @@ namespace MVC.Controllers
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch {
+            } catch {
                 ViewBag.Erro = "Não conseguimos achar seus dados, tente novamente!";
 
                 return View("TelaErro");
@@ -126,14 +126,13 @@ namespace MVC.Controllers
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
-
             var resposta = await httpClient.PostAsync($"Hobbies?idDoUsuario={HttpContext.Session.GetInt32("idusuario")}", hobbie);
 
             try {
                 resposta.EnsureSuccessStatusCode();
 
                 return View("CriarHobbies");
-            }catch {
+            } catch {
                 ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
 
                 return View("TelaErro");
@@ -148,7 +147,7 @@ namespace MVC.Controllers
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch {
+            } catch {
                 ViewBag.Erro = "Você não pode administrar seus dados se não logar ou cadastrar!";
 
                 return View("TelaErro");
@@ -156,7 +155,6 @@ namespace MVC.Controllers
 
             var dados = await resposta.Content.ReadAsStringAsync();
             List<Hobbies> dadosusuario = JsonConvert.DeserializeObject<List<Hobbies>>(dados);
-
             ViewBag.Resposta = dadosusuario;
 
             return View("AdministrarHobbies");
@@ -165,6 +163,7 @@ namespace MVC.Controllers
         public IActionResult EditarHobbies(int id)
         {
             HttpContext.Session.SetInt32("hobbiesid", id);
+
             return View();
         }
 
@@ -173,14 +172,13 @@ namespace MVC.Controllers
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{HttpContext.Session.GetString("token")}");
 
             var hobbie = new StringContent(JsonConvert.SerializeObject(hobbies), Encoding.UTF8, "application/json");
-
             var resposta = await httpClient.PutAsync($"Hobbies/{HttpContext.Session.GetInt32("hobbiesid")}", hobbie);
 
             try {
                 resposta.EnsureSuccessStatusCode();
 
                 return View("CriarHobbies");
-            }catch {
+            } catch {
                 ViewBag.Erro = "Houve um problema ao modificar os seus dados, tente novamente!";
 
                 return View("TelaErro");
@@ -195,7 +193,7 @@ namespace MVC.Controllers
 
             try {
                 resposta.EnsureSuccessStatusCode();
-            }catch (Exception erro) {
+            } catch (Exception erro) {
                 ViewBag.Erro = $"Algo deu errado durante o deletamento, tente novamente, {erro}!";
 
                 return View("TelaErro");
