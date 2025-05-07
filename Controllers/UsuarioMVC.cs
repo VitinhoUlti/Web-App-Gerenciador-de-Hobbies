@@ -25,7 +25,7 @@ namespace MVC.Controllers
         public UsuarioMVC()
         {
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("http://api/");
+            httpClient.BaseAddress = new Uri("https://web-api-com-jwt-e-cache.onrender.com/");
         }
 
         public IActionResult CriarUsuario()
