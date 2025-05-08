@@ -50,7 +50,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             } catch {
-                ViewBag.Erro = "Houve um problema no cadastramento dos seus dados, tente novamente!";
+                ViewBag.Erro = "Houve um problema na conexão com o servidor, abra o repositório Web API e clicke no link para ligar o servidor com a API!";
 
                 return View("TelaErro");
             }
