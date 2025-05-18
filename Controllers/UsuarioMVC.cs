@@ -50,7 +50,7 @@ namespace MVC.Controllers
             try {
                 resposta.EnsureSuccessStatusCode();
             } catch {
-                ViewBag.Erro = "Houve um problema na conexão com o servidor, abra o repositório Web API e clicke no link para ligar o servidor com a API!";
+                ViewBag.Erro = "Parece que você é o unico usando o servidor no momento, para economizar memoria nós desligamos o servidor automaticamente, abra o link a seguir para ligar o servidor com a WEB API! https://web-api-com-jwt-e-cache.onrender.com/swagger/index.html";
 
                 return View("TelaErro");
             }
